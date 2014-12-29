@@ -24,12 +24,18 @@
     <ClCompile Include="src\paddle.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\game_manager.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\object.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\paddle.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game_manager.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
