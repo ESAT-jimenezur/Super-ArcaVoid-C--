@@ -54,6 +54,8 @@ void Object::init(const char* sprite_name){
 
 }
 
+void Object::input(){};
+
 void Object::update(){
   //Move the object by its acceleration
   if (enabled_){

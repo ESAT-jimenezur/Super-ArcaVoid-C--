@@ -38,6 +38,7 @@ public:
   ~Object();
 
   void init(const char* sprite_name);
+  void input();
   void update();
   void draw();
 

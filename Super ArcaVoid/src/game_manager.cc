@@ -25,4 +25,7 @@ GameManager::GameManager() {
 
 void GameManager::init(){
 
+  // Game Pads init
+  game_pad1 = new GamePad();
+  game_pad2 = new GamePad(); // We comment this, we should discomment in case we need it
 }

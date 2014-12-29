@@ -9,6 +9,7 @@
 #define __PADDLE_H__
 
 #include "object.h"
+#include "game_manager.h"
 
 const float kPaddleMaxVelocity = 0.005f;
 
@@ -16,9 +17,10 @@ class Paddle : public Object{
 
 public:
 
-  float desired_x_;
+  float desired_y_;
 
-  void init(const char* sprite_name, float desired_x);
+  void init(const char* sprite_name);
+  void input();
   void update();
 
 private:

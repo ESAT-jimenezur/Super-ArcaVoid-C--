@@ -6,10 +6,12 @@
 #ifndef __GAME_MANAGER_H__
 #define __GAME_MANAGER_H__
 
+#include "../include/game_pad.h"
+
 class GameManager{
 public:
   
-  const unsigned short int kScreenWidth = 1600;
+  const unsigned short int kScreenWidth = 1024;
   const unsigned short int kScreenHeight = 768;
   
 
@@ -17,7 +19,10 @@ public:
   // Singleton instance
   static GameManager *Instance();
 
-
+  // Game Objects
+  // Pads
+  GamePad *game_pad1;
+  GamePad *game_pad2;
 
 private:
   static GameManager *state;
