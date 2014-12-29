@@ -18,5 +18,19 @@
     <ClCompile Include="src\main.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\object.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\paddle.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\object.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\paddle.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

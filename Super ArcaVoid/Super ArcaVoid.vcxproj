@@ -81,6 +81,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc" />
+    <ClCompile Include="src\object.cc" />
+    <ClCompile Include="src\paddle.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\object.h" />
+    <ClInclude Include="include\paddle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
