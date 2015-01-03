@@ -26,6 +26,9 @@ void Ball::init(){
   blue = 0;
   alpha = 255;
 
+  vel_x_ = 50.0f;
+  vel_y_ = 100.0f;
+
   p_ball();
 }
 
@@ -40,28 +43,28 @@ void Ball::update(){
    */
 
 
-
-  //vel_x_ = 4.0f;
-  //vel_y_ = 4.0f;
-
+  /*
+  vel_x_ = 4.0f;
+  vel_y_ = 4.0f;
+  
+  pos_x_ = pos_x_ + vel_x_; // * Delta T;
+  pos_y_ = pos_y_ + vel_y_; // * Delta T;
+  vel_x_ = vel_x_; // * Delta T;
+  vel_y_ = vel_y_; // * Delta T;
+  */
 
 
   //We should limit position here
   //Horizontal
-  if (pos_x_ >= GameManager::Instance()->kScreenWidth - kBallSize/2){ // Right side margin
-
-  }
-  else if (pos_x_ <= 0){ //Left side margin
-
+  if (pos_x_ >= GameManager::Instance()->kScreenWidth - kBallSize/2 || pos_x_ <= 0){
+    vel_x_ = -vel_x_;
   }
 
   //Vertical
-  if (pos_y_ >= GameManager::Instance()->kScreenHeight - kBallSize / 2){ //Bottom side margin
-
+  if (pos_y_ <= 0){ //Bottom side margin
+    vel_y_ = -vel_y_;
   }
-  else if (pos_y_ <= 0){ //Top side margin
 
-  }
 
 }
 

@@ -59,11 +59,12 @@ void Object::input(){};
 void Object::update(){
   //Move the object by its acceleration
   if (enabled_){
-    pos_x_ += vel_x_;
-    pos_y_ += vel_y_;
 
-    vel_x_ += accel_x_;
-    vel_y_ += accel_y_;
+    vel_x_ += accel_x_ * dt;
+    vel_y_ += accel_y_ * dt;
+
+    pos_x_ += vel_x_ * dt;
+    pos_y_ += vel_y_ * dt;
   }
 }
 

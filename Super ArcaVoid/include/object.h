@@ -25,6 +25,8 @@ public:
   float vel_x_;
   float vel_y_;
 
+  float dt = 0.2f;
+
   ESAT::SpriteHandle sprite_;
 
   bool enabled_;
