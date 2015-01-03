@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ball.cc" />
     <ClCompile Include="src\game_manager.cc" />
     <ClCompile Include="src\game_pad.cc" />
     <ClCompile Include="src\main.cc" />
@@ -87,6 +88,7 @@
     <ClCompile Include="src\paddle.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ball.h" />
     <ClInclude Include="include\game_manager.h" />
     <ClInclude Include="include\game_pad.h" />
     <ClInclude Include="include\object.h" />

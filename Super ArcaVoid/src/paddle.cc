@@ -7,9 +7,12 @@
 #include "../include/paddle.h"
 #include <stdio.h>
 
+Paddle::Paddle(){
+  
+}
+
 void Paddle::init(const char* sprite_name){
   Object::init(sprite_name);
-
 }
 
 

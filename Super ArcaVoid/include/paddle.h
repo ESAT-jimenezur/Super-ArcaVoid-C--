@@ -19,6 +19,9 @@ public:
 
   float desired_y_;
 
+  Paddle();
+  ~Paddle(){};
+
   void init(const char* sprite_name);
   void input();
   void update();

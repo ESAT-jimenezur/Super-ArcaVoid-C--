@@ -13,6 +13,7 @@
 
 #include "../include/game_manager.h"
 #include "../include/paddle.h"
+#include "../include/ball.h"
 
 int ESAT::main(int argc, char **argv) {
 
@@ -21,11 +22,17 @@ int ESAT::main(int argc, char **argv) {
 
   ESAT::WindowInit(GameManager::Instance()->kScreenWidth, GameManager::Instance()->kScreenHeight);
 
+  // Creating a Paddle
   Paddle main_paddle;
   main_paddle.init("paddle.png");
 
   main_paddle.pos_y_ = GameManager::Instance()->kScreenHeight - ESAT::SpriteHeight(main_paddle.sprite_);
   main_paddle.pos_x_ = (GameManager::Instance()->kScreenWidth / 2) - ESAT::SpriteHeight(main_paddle.sprite_);
+
+  // Creating a Ball
+  Ball main_ball;
+  main_ball.init();
+
 
   ///miliseconds pased from the last time that the game loop calls his functions
   long long int miliseconds = 0;
@@ -37,9 +44,15 @@ int ESAT::main(int argc, char **argv) {
       miliseconds = SDL_GetTicks();
       ESAT::DrawClear(0, 0, 0);
 
+      //Input
       main_paddle.input();
+
+      //Update
       main_paddle.update();
+
+      //Draw
       main_paddle.draw();
+      main_ball.draw();
 
       // End of current frame
       ESAT::WindowFrame();
