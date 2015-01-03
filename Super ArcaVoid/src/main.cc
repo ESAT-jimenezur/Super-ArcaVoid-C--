@@ -49,6 +49,7 @@ int ESAT::main(int argc, char **argv) {
 
       //Update
       main_paddle.update();
+      main_ball.update();
 
       //Draw
       main_paddle.draw();

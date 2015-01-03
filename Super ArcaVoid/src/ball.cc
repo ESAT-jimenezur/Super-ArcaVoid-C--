@@ -29,6 +29,41 @@ void Ball::init(){
   p_ball();
 }
 
+void Ball::update(){
+  Object::update();
+
+  //Movement -> EULER OR RUNGE KUTTA HERE
+  /*
+   * @link http://es.wikipedia.org/wiki/M%C3%A9todo_de_Euler
+   * @link http://es.wikipedia.org/wiki/M%C3%A9todo_de_Runge-Kutta
+   *
+   */
+
+
+
+  //vel_x_ = 4.0f;
+  //vel_y_ = 4.0f;
+
+
+
+  //We should limit position here
+  //Horizontal
+  if (pos_x_ >= GameManager::Instance()->kScreenWidth - kBallSize/2){ // Right side margin
+
+  }
+  else if (pos_x_ <= 0){ //Left side margin
+
+  }
+
+  //Vertical
+  if (pos_y_ >= GameManager::Instance()->kScreenHeight - kBallSize / 2){ //Bottom side margin
+
+  }
+  else if (pos_y_ <= 0){ //Top side margin
+
+  }
+
+}
 
 void Ball::draw(){
   Object::draw();
@@ -44,7 +79,7 @@ void Ball::setBallColor(unsigned char r, unsigned char g, unsigned char b, unsig
 }
 
 void Ball::p_ball(){
-  //Ball size 4 pixels
+  //Ball size kBallSize constant
 
   float points[] = {
     pos_x_ - kBallSize/2, pos_y_ + kBallSize/2,
