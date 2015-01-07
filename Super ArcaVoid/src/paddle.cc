@@ -23,13 +23,19 @@ void Paddle::input(){
 
   // If press
   // Solucion temporal al movimiento... mas adelante se mejorara
+  /*
   if (GameManager::Instance()->game_pad1->key_left_press){
     vel_x_ -= 20;
   }
   else if (GameManager::Instance()->game_pad1->key_right_press){
     vel_x_ += 20;
   }
-  
+  */
+
+
+  //Mouse position based paddle movement
+  pos_x_ = GameManager::Instance()->game_pad1->getMousePositionX();
+
   GameManager::Instance()->game_pad1->restartPulsations();
 };
 

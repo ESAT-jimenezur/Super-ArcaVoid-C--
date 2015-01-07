@@ -1,3 +1,16 @@
+/* Main class
+ *
+ * @author Jose Luis Jimenez Urbano | < ijos@ijos.es > | < @iJos >
+ * 
+ * TODO:
+ *
+ * PREGUNTAS PARA GUSTAVO:
+ *  Como detectar colision en paddle (metodo optimo) -> Por pixel
+ *  Los ladrillos deben ser sprites? o mejor pintados con la libreria de esat? -> ESAT
+ *   --Matriz? -> Si
+ *  Movimiento más fluido en le paddle... (metodo) -> Raton
+ */
+
 #include <stdio.h>
 #include <random>
 #include <time.h>

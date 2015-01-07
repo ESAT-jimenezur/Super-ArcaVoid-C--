@@ -44,3 +44,30 @@ void GamePad::restartPulsations() {
   key_pause_press = false;
   key_enter_press = false;
 }
+
+void GamePad::mouseDetection(){
+  mouse_position_x_ = ESAT::MousePositionX();
+  mouse_position_y_ = ESAT::MousePositionY();
+  mouse_wheel_x_ = ESAT::MouseWheelX();
+  mouse_wheel_y_ = ESAT::MouseWheelY();
+}
+
+int GamePad::getMousePositionX(){
+  mouseDetection();
+  return mouse_position_x_;
+}
+
+int GamePad::getMousePositionY(){
+  mouseDetection();
+  return mouse_position_y_;
+}
+
+int GamePad::getMouseWheelX(){
+  mouseDetection();
+  return mouse_wheel_x_;
+}
+
+int GamePad::getMouseWheelY(){
+  mouseDetection();
+  return mouse_wheel_y_;
+}

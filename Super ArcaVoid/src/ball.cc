@@ -26,8 +26,8 @@ void Ball::init(){
   blue = 0;
   alpha = 255;
 
-  vel_x_ = 50.0f;
-  vel_y_ = 100.0f;
+  vel_x_ = 5.0f;
+  vel_y_ = 25.0f;
 
   p_ball();
 }
@@ -61,10 +61,9 @@ void Ball::update(){
   }
 
   //Vertical
-  if (pos_y_ <= 0){ //Bottom side margin
+  if (pos_y_ <= 0 || pos_y_ >= GameManager::Instance()->kScreenHeight - kBallSize / 2){ //Bottom side margin
     vel_y_ = -vel_y_;
   }
-
 
 }
 
@@ -95,5 +94,4 @@ void Ball::p_ball(){
   ESAT::DrawSetFillColor(red, green, blue, alpha);
   ESAT::DrawSetStrokeColor(red, green, blue, alpha);
   ESAT::DrawSolidPath(points, 5, true);
-
 }

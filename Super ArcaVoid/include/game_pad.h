@@ -22,7 +22,12 @@ public:
   const char kNumOneDown = '1';
   const char kNumTwoDown = '2';
   const char kNumThreeDown = '3';
-
+  
+  //Mouse Position
+  int mouse_position_x_;
+  int mouse_position_y_;
+  int mouse_wheel_x_;
+  int mouse_wheel_y_;
 
   //keys pressed
   bool key_up_press;
@@ -46,7 +51,32 @@ public:
   /** @brief Restarts pulsations of the player
    *
    */
-  void restartPulsations();  
+  void restartPulsations(); 
+
+  /** @brief This method updates X and Y Mouse Data
+   *
+   */
+  void mouseDetection();
+  
+  /* @brief Returns X mouse Position
+   *
+   */
+  int getMousePositionX();
+
+  /* @brief Returns Y mouse Position
+   *
+   */
+  int getMousePositionY();
+
+  /* @brief Returns X mouse Wheel Position
+   *
+   */
+  int getMouseWheelX();
+
+  /* @brief Returns Y mouse Wheel Position
+   *
+   */
+  int getMouseWheelY();
 };
 
 #endif __GAME_PADD_H__
