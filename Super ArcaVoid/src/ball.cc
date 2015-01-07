@@ -34,27 +34,6 @@ void Ball::init(){
 
 void Ball::update(){
   Object::update();
-
-  //Movement -> EULER OR RUNGE KUTTA HERE
-  /*
-   * @link http://es.wikipedia.org/wiki/M%C3%A9todo_de_Euler
-   * @link http://es.wikipedia.org/wiki/M%C3%A9todo_de_Runge-Kutta
-   *
-   */
-
-
-  /*
-  vel_x_ = 4.0f;
-  vel_y_ = 4.0f;
-  
-  pos_x_ = pos_x_ + vel_x_; // * Delta T;
-  pos_y_ = pos_y_ + vel_y_; // * Delta T;
-  vel_x_ = vel_x_; // * Delta T;
-  vel_y_ = vel_y_; // * Delta T;
-  */
-
-  //paddleCollision();
-
 }
 
 void Ball::draw(){
@@ -69,13 +48,21 @@ void Ball::paddleCollision(Paddle& main_paddle){
     vel_x_ = -vel_x_;
   }
 
-  //Vertical  /*|| pos_y_ >= GameManager::Instance()->kScreenHeight - kBallSize / 2*/
+  //Vertical
   if (pos_y_ <= 0){ //Bottom side margin
     vel_y_ = -vel_y_;
   }
 
   //Ball collision detection
   if (pos_y_ >= main_paddle.pos_y_ && pos_x_ >= main_paddle.pos_x_ && pos_x_ <= main_paddle.pos_x_ + ESAT::SpriteWidth(main_paddle.sprite_)){
+    
+    if (pos_x_ >= main_paddle.pos_x_ && pos_x_ <= main_paddle.pos_x_ + (ESAT::SpriteWidth(main_paddle.sprite_) / 2) - 5 ||
+        pos_x_ >= (ESAT::SpriteWidth(main_paddle.sprite_) / 2) + 5 && pos_x_ <= main_paddle.pos_x_ + ESAT::SpriteWidth(main_paddle.sprite_)){
+      //FixMe
+      //Collision fails a little
+      printf("border col \n");
+      vel_x_ = -vel_x_;
+    }
     vel_y_ = -vel_y_;
   }
 
