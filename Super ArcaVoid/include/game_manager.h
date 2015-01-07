@@ -13,8 +13,6 @@ public:
   
   const unsigned short int kScreenWidth = 1024;
   const unsigned short int kScreenHeight = 768;
-  
-
 
   // Singleton instance
   static GameManager *Instance();

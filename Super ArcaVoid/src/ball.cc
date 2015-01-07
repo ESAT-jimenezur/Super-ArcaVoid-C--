@@ -53,17 +53,7 @@ void Ball::update(){
   vel_y_ = vel_y_; // * Delta T;
   */
 
-
-  //We should limit position here
-  //Horizontal
-  if (pos_x_ >= GameManager::Instance()->kScreenWidth - kBallSize/2 || pos_x_ <= 0){
-    vel_x_ = -vel_x_;
-  }
-
-  //Vertical
-  if (pos_y_ <= 0 || pos_y_ >= GameManager::Instance()->kScreenHeight - kBallSize / 2){ //Bottom side margin
-    vel_y_ = -vel_y_;
-  }
+  //paddleCollision();
 
 }
 
@@ -71,6 +61,24 @@ void Ball::draw(){
   Object::draw();
 
   p_ball();
+}
+
+void Ball::paddleCollision(Paddle& main_paddle){
+  //Horizontal
+  if (pos_x_ >= GameManager::Instance()->kScreenWidth - kBallSize / 2 || pos_x_ <= 0){
+    vel_x_ = -vel_x_;
+  }
+
+  //Vertical  /*|| pos_y_ >= GameManager::Instance()->kScreenHeight - kBallSize / 2*/
+  if (pos_y_ <= 0){ //Bottom side margin
+    vel_y_ = -vel_y_;
+  }
+
+  //Ball collision detection
+  if (pos_y_ >= main_paddle.pos_y_ && pos_x_ >= main_paddle.pos_x_ && pos_x_ <= main_paddle.pos_x_ + ESAT::SpriteWidth(main_paddle.sprite_)){
+    vel_y_ = -vel_y_;
+  }
+
 }
 
 void Ball::setBallColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a){

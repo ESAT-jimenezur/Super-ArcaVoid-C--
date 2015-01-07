@@ -26,6 +26,7 @@ public:
   void input();
   void update();
 
+  
 private:
 
 

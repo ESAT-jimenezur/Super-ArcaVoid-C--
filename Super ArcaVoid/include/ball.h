@@ -9,6 +9,7 @@
 
 #include "object.h"
 #include "game_manager.h"
+#include "paddle.h"
 
 const float kBallMaxVelocity = 4.0f;
 const unsigned char kBallSize = 4;
@@ -27,14 +28,18 @@ public:
 
   void setBallColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
+  void paddleCollision(Paddle& main_paddle);
+
 private:
   unsigned char red;
   unsigned char green;
   unsigned char blue;
   unsigned char alpha;
   
-  //This method creates a pixel ball, without using a sprite
+  ///This method creates a pixel ball, without using a sprite
   void p_ball();
+
+  
 
 };
 
