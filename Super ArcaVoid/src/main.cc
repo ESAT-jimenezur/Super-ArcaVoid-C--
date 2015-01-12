@@ -27,6 +27,7 @@
 #include "../include/game_manager.h"
 #include "../include/paddle.h"
 #include "../include/ball.h"
+#include "../include/brick.h"
 
 int ESAT::main(int argc, char **argv) {
 
@@ -34,7 +35,7 @@ int ESAT::main(int argc, char **argv) {
   srand(time(0));
 
   ESAT::WindowInit(GameManager::Instance()->kScreenWidth, GameManager::Instance()->kScreenHeight);
-
+  
   // Creating a Paddle
   Paddle main_paddle;
   main_paddle.init("paddle.png");
@@ -45,6 +46,25 @@ int ESAT::main(int argc, char **argv) {
   // Creating a Ball
   Ball main_ball;
   main_ball.init();
+
+
+  //Brick TESTS
+  int brick_pos_x_ = 0;
+  int brick_pos_y_ = 0;
+
+  Brick brick[GameManager::kBricks_amount];
+  for (int i = 0; i < GameManager::kBricks_amount; ++i){
+    if ((i+1) % GameManager::kBricks_per_line == 0){
+      brick_pos_y_ = brick_pos_y_ + GameManager::kBricks_vertical_offset;
+      brick_pos_x_ = 0;
+    }
+
+    brick[i].init();
+    brick[i].position(brick_pos_x_ + GameManager::kBricks_horizontal_offset, brick_pos_y_);
+    brick[i].size(25, 10);
+
+    brick_pos_x_ += brick_pos_x_ + GameManager::kBricks_horizontal_offset;
+  }
 
 
   ///miliseconds pased from the last time that the game loop calls his functions
@@ -62,12 +82,18 @@ int ESAT::main(int argc, char **argv) {
 
       //Update
       main_paddle.update();
+
       main_ball.update();
       main_ball.paddleCollision(main_paddle);
 
       //Draw
       main_paddle.draw();
       main_ball.draw();
+
+      for (int i = 0; i < GameManager::kBricks_amount; ++i){
+        brick[i].draw();
+      }
+      
 
       // End of current frame
       ESAT::WindowFrame();

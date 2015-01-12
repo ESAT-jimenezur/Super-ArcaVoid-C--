@@ -31,10 +31,10 @@ public:
   void paddleCollision(Paddle& main_paddle);
 
 private:
-  unsigned char red;
-  unsigned char green;
-  unsigned char blue;
-  unsigned char alpha;
+  unsigned char red_;
+  unsigned char green_;
+  unsigned char blue_;
+  unsigned char alpha_;
   
   ///This method creates a pixel ball, without using a sprite
   void p_ball();

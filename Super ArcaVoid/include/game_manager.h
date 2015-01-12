@@ -14,6 +14,14 @@ public:
   const unsigned short int kScreenWidth = 1024;
   const unsigned short int kScreenHeight = 768;
 
+  static const unsigned short int kBricks_per_line = 14;
+  static const unsigned short int kBricks_lines = 8;
+  static const unsigned int kBricks_amount = kBricks_per_line * kBricks_lines;
+  static const unsigned short int kBricks_vertical_offset = 2;
+  static const unsigned short int kBricks_horizontal_offset = 5;
+
+  
+
   // Singleton instance
   static GameManager *Instance();
 

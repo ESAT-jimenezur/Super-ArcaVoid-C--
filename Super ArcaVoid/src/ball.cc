@@ -5,9 +5,9 @@
 
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include <ESAT/draw.h>
-#include <stdio.h>
 
 #include "../include/ball.h"
 
@@ -21,10 +21,10 @@ void Ball::init(){
   Object::init(NULL); // We don't need any sprite
 
   //Yellow ball by default
-  red = 255;
-  green = 255;
-  blue = 0;
-  alpha = 255;
+  red_ = 255;
+  green_ = 255;
+  blue_ = 0;
+  alpha_ = 255;
 
   vel_x_ = 5.0f;
   vel_y_ = 25.0f;
@@ -69,10 +69,10 @@ void Ball::paddleCollision(Paddle& main_paddle){
 }
 
 void Ball::setBallColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a){
-  red   = r;
-  green = g;
-  blue  = b;
-  alpha = a;
+  red_   = r;
+  green_ = g;
+  blue_  = b;
+  alpha_ = a;
 }
 
 void Ball::p_ball(){
@@ -86,7 +86,7 @@ void Ball::p_ball(){
     pos_x_ - kBallSize/2, pos_y_ + kBallSize/2, // last point connects with the first one
   };
   
-  ESAT::DrawSetFillColor(red, green, blue, alpha);
-  ESAT::DrawSetStrokeColor(red, green, blue, alpha);
+  ESAT::DrawSetFillColor(red_, green_, blue_, alpha_);
+  ESAT::DrawSetStrokeColor(red_, green_, green_, green_);
   ESAT::DrawSolidPath(points, 5, true);
 }
