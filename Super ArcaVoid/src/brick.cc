@@ -43,17 +43,19 @@ void Brick::setBrickColor(unsigned char r, unsigned char g, unsigned char b, uns
 }
 
 void Brick::p_brick(){
-  float points[] = {
-    pos_x_, pos_y_ + height_,
-    pos_x_ + width_, pos_y_ + height_,
-    pos_x_ + width_, pos_y_,
-    pos_x_, pos_y_,
-    pos_x_, pos_y_ + height_, // last point connects with the first one
-  };
+  if (enabled_){
+    float points[] = {
+      pos_x_, pos_y_ + height_,
+      pos_x_ + width_, pos_y_ + height_,
+      pos_x_ + width_, pos_y_,
+      pos_x_, pos_y_,
+      pos_x_, pos_y_ + height_, // last point connects with the first one
+    };
 
-  ESAT::DrawSetFillColor(red_, green_, blue_, alpha_);
-  ESAT::DrawSetStrokeColor(red_, green_, green_, green_);
-  ESAT::DrawSolidPath(points, 5, true);
+    ESAT::DrawSetFillColor(red_, green_, blue_, alpha_);
+    ESAT::DrawSetStrokeColor(red_, green_, green_, green_);
+    ESAT::DrawSolidPath(points, 5, true);
+  }
 }
 
 void Brick::size(int w, int h){

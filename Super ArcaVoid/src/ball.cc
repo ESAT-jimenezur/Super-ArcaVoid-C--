@@ -61,7 +61,7 @@ void Ball::paddleCollision(const Paddle& main_paddle){
       //FixMe
       //Collision fails a little
       //printf("border col \n");
-      vel_x_ = -vel_x_;
+      //vel_x_ = -vel_x_;
     }
     vel_y_ = -vel_y_;
   }
@@ -71,12 +71,16 @@ void Ball::paddleCollision(const Paddle& main_paddle){
 void Ball::brickCollision(Brick* bricks){
   printf("Brick Pos %.0f %.0f | Ball Pos  %.0f %.0f\n", bricks[104].pos_x_, bricks[104].pos_y_, pos_x_, pos_y_);
   for (int i = 0; i < GameManager::kBricks_amount; ++i){
-    //if ((pos_x_ > bricks[i].pos_x_ && pos_x_ < bricks[i].width_) && (pos_y_ > bricks[i].pos_y_ && pos_y_ < bricks[i].height_)){
-    if ((pos_y_ > bricks[i].pos_y_ && pos_y_ < bricks[i].pos_y_ + bricks[i].height_) &&
+    if (bricks[i].enabled_){
+      //if ((pos_x_ > bricks[i].pos_x_ && pos_x_ < bricks[i].width_) && (pos_y_ > bricks[i].pos_y_ && pos_y_ < bricks[i].height_)){
+      if ((pos_y_ > bricks[i].pos_y_ && pos_y_ < bricks[i].pos_y_ + bricks[i].height_) &&
         (pos_x_ > bricks[i].pos_x_ && pos_x_ < bricks[i].pos_x_ + bricks[i].width_)){
-      bricks[i].setBrickColor(0, 0, 255, 255);
-      vel_y_ = -vel_y_;
+        //bricks[i].setBrickColor(0, 0, 255, 255);
+        bricks[i].enabled_ = false;
+        vel_y_ = -vel_y_;
+      }
     }
+    
   }
 }
 
