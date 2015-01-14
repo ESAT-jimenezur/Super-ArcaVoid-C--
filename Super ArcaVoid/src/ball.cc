@@ -38,11 +38,11 @@ void Ball::update(){
 
 void Ball::draw(){
   Object::draw();
-
+  
   p_ball();
 }
 
-void Ball::paddleCollision(Paddle& main_paddle){
+void Ball::paddleCollision(const Paddle& main_paddle){
   //Horizontal
   if (pos_x_ >= GameManager::Instance()->kScreenWidth - kBallSize / 2 || pos_x_ <= 0){
     vel_x_ = -vel_x_;
@@ -60,12 +60,24 @@ void Ball::paddleCollision(Paddle& main_paddle){
         pos_x_ >= (ESAT::SpriteWidth(main_paddle.sprite_) / 2) + 5 && pos_x_ <= main_paddle.pos_x_ + ESAT::SpriteWidth(main_paddle.sprite_)){
       //FixMe
       //Collision fails a little
-      printf("border col \n");
+      //printf("border col \n");
       vel_x_ = -vel_x_;
     }
     vel_y_ = -vel_y_;
   }
 
+}
+
+void Ball::brickCollision(Brick* bricks){
+  printf("Brick Pos %.0f %.0f | Ball Pos  %.0f %.0f\n", bricks[104].pos_x_, bricks[104].pos_y_, pos_x_, pos_y_);
+  for (int i = 0; i < GameManager::kBricks_amount; ++i){
+    //if ((pos_x_ > bricks[i].pos_x_ && pos_x_ < bricks[i].width_) && (pos_y_ > bricks[i].pos_y_ && pos_y_ < bricks[i].height_)){
+    if ((pos_y_ > bricks[i].pos_y_ && pos_y_ < bricks[i].pos_y_ + bricks[i].height_) &&
+        (pos_x_ > bricks[i].pos_x_ && pos_x_ < bricks[i].pos_x_ + bricks[i].width_)){
+      bricks[i].setBrickColor(0, 0, 255, 255);
+      vel_y_ = -vel_y_;
+    }
+  }
 }
 
 void Ball::setBallColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a){
@@ -77,7 +89,7 @@ void Ball::setBallColor(unsigned char r, unsigned char g, unsigned char b, unsig
 
 void Ball::p_ball(){
   //Ball size kBallSize constant
-
+  
   float points[] = {
     pos_x_ - kBallSize/2, pos_y_ + kBallSize/2,
     pos_x_ + kBallSize/2, pos_y_ + kBallSize/2,
@@ -85,7 +97,6 @@ void Ball::p_ball(){
     pos_x_ - kBallSize/2, pos_y_ - kBallSize/2,
     pos_x_ - kBallSize/2, pos_y_ + kBallSize/2, // last point connects with the first one
   };
-  
   ESAT::DrawSetFillColor(red_, green_, blue_, alpha_);
   ESAT::DrawSetStrokeColor(red_, green_, green_, green_);
   ESAT::DrawSolidPath(points, 5, true);

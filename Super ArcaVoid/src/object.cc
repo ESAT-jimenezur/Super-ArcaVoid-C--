@@ -5,6 +5,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "../include/object.h"
 
@@ -59,7 +60,6 @@ void Object::input(){};
 void Object::update(){
   //Move the object by its acceleration
   if (enabled_){
-
     vel_x_ += accel_x_ * dt;
     vel_y_ += accel_y_ * dt;
 

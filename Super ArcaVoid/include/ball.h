@@ -10,6 +10,7 @@
 #include "object.h"
 #include "game_manager.h"
 #include "paddle.h"
+#include "brick.h"
 
 const float kBallMaxVelocity = 4.0f;
 const unsigned char kBallSize = 4;
@@ -28,7 +29,8 @@ public:
 
   void setBallColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
-  void paddleCollision(Paddle& main_paddle);
+  void paddleCollision(const Paddle& main_paddle);
+  void brickCollision(Brick* bricks); // Should we use const here?
 
 private:
   unsigned char red_;

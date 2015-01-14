@@ -20,8 +20,6 @@
 #include <ESAT/sprite.h>
 #include <ESAT/input.h>
 
-
-
 #include "SDL/SDL_timer.h"
 
 #include "../include/game_manager.h"
@@ -48,22 +46,33 @@ int ESAT::main(int argc, char **argv) {
   main_ball.init();
 
 
-  //Brick TESTS
+  //Bricks
   int brick_pos_x_ = 0;
   int brick_pos_y_ = 0;
+  int tmp_vertical_offset_ = 0;
+  int tmp_horizontal_offset_ = 0;
 
-  Brick brick[GameManager::kBricks_amount];
+  Brick bricks[GameManager::kBricks_amount];
   for (int i = 0; i < GameManager::kBricks_amount; ++i){
-    if ((i+1) % GameManager::kBricks_per_line == 0){
-      brick_pos_y_ = brick_pos_y_ + GameManager::kBricks_vertical_offset;
+    
+    //Little and dirty fix to deal with first line offsets
+    tmp_vertical_offset_ = (i == 0) ? 0 : GameManager::kBrick_height + GameManager::kBricks_vertical_offset;
+    tmp_horizontal_offset_ = (i % GameManager::kBricks_per_line == 0) ? 0 : GameManager::kBrick_width + GameManager::kBricks_horizontal_offset;
+
+    //Line Break
+    if (i % GameManager::kBricks_per_line == 0){
+      brick_pos_y_ = brick_pos_y_ + (tmp_vertical_offset_);
       brick_pos_x_ = 0;
     }
 
-    brick[i].init();
-    brick[i].position(brick_pos_x_ + GameManager::kBricks_horizontal_offset, brick_pos_y_);
-    brick[i].size(25, 10);
+    bricks[i].init();
+    bricks[i].position(brick_pos_x_ + (tmp_horizontal_offset_), brick_pos_y_);
+    
+    //bricks[i].setBrickColor(rand() % 255, rand() % 255, rand() % 255, 255);
 
-    brick_pos_x_ += brick_pos_x_ + GameManager::kBricks_horizontal_offset;
+    bricks[i].size(GameManager::kBrick_width, GameManager::kBrick_height);
+
+    brick_pos_x_ = brick_pos_x_ + (tmp_horizontal_offset_);
   }
 
 
@@ -85,13 +94,14 @@ int ESAT::main(int argc, char **argv) {
 
       main_ball.update();
       main_ball.paddleCollision(main_paddle);
+      main_ball.brickCollision(bricks);
 
       //Draw
       main_paddle.draw();
       main_ball.draw();
 
       for (int i = 0; i < GameManager::kBricks_amount; ++i){
-        brick[i].draw();
+        bricks[i].draw();
       }
       
 
