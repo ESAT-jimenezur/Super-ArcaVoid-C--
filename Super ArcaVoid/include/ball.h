@@ -13,7 +13,7 @@
 #include "brick.h"
 
 const float kBallMaxVelocity = 4.0f;
-const unsigned char kBallSize = 4;
+const unsigned char kBallSize = 5;
 
 class Ball : public Object{
 
@@ -31,6 +31,8 @@ public:
 
   void paddleCollision(const Paddle& main_paddle);
   void brickCollision(Brick* bricks); // Should we use const here?
+
+  bool collision_with_brick_ = false;
 
 private:
   unsigned char red_;

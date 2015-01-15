@@ -9,6 +9,9 @@
 
 GameManager* GameManager::state = NULL;
 
+unsigned int GameManager::kAnimation_position_x;
+unsigned int GameManager::kAnimation_position_y;
+
 GameManager* GameManager::Instance() {
   //only one instance of this object can be generated
   if (!state) {
@@ -19,7 +22,8 @@ GameManager* GameManager::Instance() {
 }
 
 GameManager::GameManager() {
-
+  kAnimation_position_x = 0;
+  kAnimation_position_y = 0;
 }
 
 

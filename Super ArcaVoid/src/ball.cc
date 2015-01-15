@@ -10,7 +10,7 @@
 #include <ESAT/draw.h>
 
 #include "../include/ball.h"
-
+#include "../include/animation.h"
 
 Ball::Ball(){
   pos_x_ = GameManager::Instance()->kScreenWidth / 2 - kBallSize/2;
@@ -29,6 +29,7 @@ void Ball::init(){
   vel_x_ = 5.0f;
   vel_y_ = 25.0f;
 
+  collision_with_brick_ = false;
   p_ball();
 }
 
@@ -75,6 +76,11 @@ void Ball::brickCollision(Brick* bricks){
         (pos_x_ > bricks[i].pos_x_ && pos_x_ < bricks[i].pos_x_ + bricks[i].width_)){
         bricks[i].enabled_ = false;
         vel_y_ = -vel_y_;
+
+        //Add points here
+        collision_with_brick_ = true;
+        GameManager::kAnimation_position_x = bricks[i].pos_x_;
+        GameManager::kAnimation_position_y = bricks[i].pos_y_;
       }
     }
     

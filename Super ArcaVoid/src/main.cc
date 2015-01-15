@@ -26,6 +26,8 @@
 #include "../include/paddle.h"
 #include "../include/ball.h"
 #include "../include/brick.h"
+#include "../include/animation.h"
+
 
 int ESAT::main(int argc, char **argv) {
 
@@ -45,6 +47,9 @@ int ESAT::main(int argc, char **argv) {
   Ball main_ball;
   main_ball.init();
 
+  // Animations instance
+  Animation animations;
+  
 
   //Bricks
   int brick_pos_x_ = 0;
@@ -78,7 +83,7 @@ int ESAT::main(int argc, char **argv) {
 
   ///miliseconds pased from the last time that the game loop calls his functions
   long long int miliseconds = 0;
-  
+  unsigned int frames_counter = 0;
   while (ESAT::WindowIsOpened()){
 
     if (SDL_GetTicks() - miliseconds >= 16) {
@@ -103,7 +108,37 @@ int ESAT::main(int argc, char **argv) {
       for (int i = 0; i < GameManager::kBricks_amount; ++i){
         bricks[i].draw();
       }
+     
+
+      if (main_ball.collision_with_brick_ && frames_counter >= 0 && frames_counter < GameManager::kAnimation_duration){
+        Animation animation;
+        vector2 position;
+        position.pos_x_ = GameManager::kAnimation_position_x;
+        position.pos_y_ = GameManager::kAnimation_position_y - frames_counter;
+        animation.animateText("+100", position);
+        frames_counter++;
+      }
+
+      if (frames_counter >= GameManager::kAnimation_duration){
+        frames_counter = 0;
+        main_ball.collision_with_brick_ = false;
+      }
       
+
+      
+      
+      //Create animation object
+      /*
+      Animation animation;
+      vector2 start_position, end_position;
+      start_position.pos_x_ = 100;
+      start_position.pos_y_ = 100;
+      end_position.pos_x_ = 350;
+      end_position.pos_y_ = 350;
+      animation.animateText("TEST", start_position, end_position, 5.0f);
+      */
+      //animations.draw();
+
 
       // End of current frame
       ESAT::WindowFrame();

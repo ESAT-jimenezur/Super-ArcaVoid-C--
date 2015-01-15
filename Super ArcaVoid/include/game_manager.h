@@ -23,6 +23,9 @@ public:
   static const unsigned short int kBricks_vertical_offset = 3;
   static const unsigned short int kBricks_horizontal_offset = 3;
 
+  static const unsigned int kAnimation_duration = 25;
+  static unsigned int kAnimation_position_x;
+  static unsigned int kAnimation_position_y;
   
 
   // Singleton instance
