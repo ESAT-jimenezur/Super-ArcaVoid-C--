@@ -85,6 +85,7 @@
     <ClCompile Include="src\brick.cc" />
     <ClCompile Include="src\game_manager.cc" />
     <ClCompile Include="src\game_pad.cc" />
+    <ClCompile Include="src\hud.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\object.cc" />
     <ClCompile Include="src\paddle.cc" />
@@ -95,6 +96,7 @@
     <ClInclude Include="include\brick.h" />
     <ClInclude Include="include\game_manager.h" />
     <ClInclude Include="include\game_pad.h" />
+    <ClInclude Include="include\hud.h" />
     <ClInclude Include="include\object.h" />
     <ClInclude Include="include\paddle.h" />
   </ItemGroup>

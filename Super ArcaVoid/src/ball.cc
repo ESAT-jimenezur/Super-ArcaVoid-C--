@@ -78,6 +78,7 @@ void Ball::brickCollision(Brick* bricks){
         vel_y_ = -vel_y_;
 
         //Add points here
+        GameManager::points_ += 100;
         collision_with_brick_ = true;
         GameManager::kAnimation_position_x = bricks[i].pos_x_;
         GameManager::kAnimation_position_y = bricks[i].pos_y_;

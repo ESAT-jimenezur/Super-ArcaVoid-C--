@@ -26,7 +26,8 @@ public:
   static const unsigned int kAnimation_duration = 25;
   static unsigned int kAnimation_position_x;
   static unsigned int kAnimation_position_y;
-  
+
+  static unsigned int points_;
 
   // Singleton instance
   static GameManager *Instance();

@@ -27,7 +27,7 @@
 #include "../include/ball.h"
 #include "../include/brick.h"
 #include "../include/animation.h"
-
+#include "../include/hud.h"
 
 int ESAT::main(int argc, char **argv) {
 
@@ -47,9 +47,8 @@ int ESAT::main(int argc, char **argv) {
   Ball main_ball;
   main_ball.init();
 
-  // Animations instance
-  Animation animations;
-  
+  //Hud
+  Hud hud;
 
   //Bricks
   int brick_pos_x_ = 0;
@@ -127,17 +126,7 @@ int ESAT::main(int argc, char **argv) {
 
       
       
-      //Create animation object
-      /*
-      Animation animation;
-      vector2 start_position, end_position;
-      start_position.pos_x_ = 100;
-      start_position.pos_y_ = 100;
-      end_position.pos_x_ = 350;
-      end_position.pos_y_ = 350;
-      animation.animateText("TEST", start_position, end_position, 5.0f);
-      */
-      //animations.draw();
+      hud.draw();
 
 
       // End of current frame
