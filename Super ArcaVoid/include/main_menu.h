@@ -1,6 +1,6 @@
-/* Default Main Menu class declaration
+/** @brief Default Main Menu class declaration
  *
- * Jose Luis
+ * @author Jose Luis Jimenez Urbano | < ijos@ijos.es > | < @iJos >
  */
 
 #ifndef __MAIN_MENU__
@@ -11,7 +11,7 @@ public:
 
   void input();
 
-  /* @brief Show the menu on screen
+  /** @brief Show the menu on screen
    *
    */
   void showMenu();

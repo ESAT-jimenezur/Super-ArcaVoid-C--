@@ -1,14 +1,12 @@
-/*  Default Game Padd class implementation
+/** @brief Default Game Padd class implementation
  *
+ * Detect pulsation in the keyboard
  */
 
 #ifndef __GAME_PADD_H__
 #define __GAME_PADD_H__
 
 #include <ESAT/input.h>
-/**
-* @brief Detect pulsation in the keyboard
-*/
 class GamePad {
 public:
   //constants key
@@ -58,22 +56,22 @@ public:
    */
   void mouseDetection();
   
-  /* @brief Returns X mouse Position
+  /** @brief Returns X mouse Position
    *
    */
   int getMousePositionX();
 
-  /* @brief Returns Y mouse Position
+  /** @brief Returns Y mouse Position
    *
    */
   int getMousePositionY();
 
-  /* @brief Returns X mouse Wheel Position
+  /** @brief Returns X mouse Wheel Position
    *
    */
   int getMouseWheelX();
 
-  /* @brief Returns Y mouse Wheel Position
+  /** @brief Returns Y mouse Wheel Position
    *
    */
   int getMouseWheelY();

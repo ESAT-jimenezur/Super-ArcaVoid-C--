@@ -1,6 +1,6 @@
-/* Default Game Manager class declaration
+/** @brief Default Game Manager class declaration
  *
- * Modified by Jose Luis
+ * @author Jose Luis Jimenez Urbano | < ijos@ijos.es > | < @iJos >
  */
 
 #ifndef __GAME_MANAGER_H__

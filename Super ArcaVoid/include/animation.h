@@ -1,4 +1,4 @@
-/* @brief Animations layer declaration
+/** @brief Animations layer declaration
  *
  * @author Modified by Jose Luis
  */
@@ -23,7 +23,7 @@ public:
 
   void init();
   
-  /* @brief This method animates a text in a vec2 position
+  /** @brief This method animates a text in a vec2 position
    * 
    * @param std::string text
    * @param vector2 position

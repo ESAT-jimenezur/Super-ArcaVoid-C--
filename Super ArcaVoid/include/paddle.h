@@ -1,7 +1,7 @@
-/* Default Paddle class declaration
+/** @brief Default Paddle class declaration
  * From PADDLE.h
  *
- * Modified by Jose Luis
+ * @author Modified by Jose Luis
  */
 
 

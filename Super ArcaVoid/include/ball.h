@@ -1,4 +1,4 @@
-/* @brief Default Ball class declaration
+/** @brief Default Ball class declaration
  *
  * @author Jose Luis Jimenez Urbano | < ijos@ijos.es > | < @iJos >
  */
@@ -28,7 +28,7 @@ public:
   void draw();
   
 
-  /* @brief Method to set the color of the ball (RGBA)
+  /** @brief Method to set the color of the ball (RGBA)
    *
    * @param r (red)
    * @param g (green)
@@ -37,13 +37,13 @@ public:
    */
   void setBallColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
-  /* @brief Checks if exist a collision with the referenced paddle
+  /** @brief Checks if exist a collision with the referenced paddle
    *
    * @param Paddle& main_paddle (reference)
    */
   void paddleCollision(const Paddle& main_paddle);
 
-  /* @brief Checks if exist a collision with the referenced brick/s
+  /** @brief Checks if exist a collision with the referenced brick/s
    *
    * @param Brick& bricks (reference)
    */

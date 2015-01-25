@@ -1,7 +1,7 @@
-/* Default Object class declaration
+/** @brief Default Object class declaration
  * From PONG.h
  * 
- * Modified by Jose Luis
+ * @author Modified by Jose Luis
  */
 
 
@@ -44,7 +44,7 @@ public:
   void update();
   void draw();
 
-  /* @brief Check if the object is colliding right now with the referenced object
+  /** @brief Check if the object is colliding right now with the referenced object
    *
    * @param Object& (reference)
    */

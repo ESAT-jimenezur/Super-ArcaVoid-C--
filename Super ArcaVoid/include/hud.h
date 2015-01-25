@@ -1,6 +1,6 @@
-/* HUD layer declaration
+/** @brief HUD layer declaration
  *
- * Modified by Jose Luis
+ * @author Modified by Jose Luis
  */
 
 #ifndef __HUD_H__
@@ -17,7 +17,7 @@ public:
   void init();
   void draw();
   
-  /* @brief Draws the HUD on screen
+  /** @brief Draws the HUD on screen
    *
    */
   void drawHUD();
