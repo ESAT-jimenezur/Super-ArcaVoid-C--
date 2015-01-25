@@ -1,6 +1,6 @@
-/* Animations layer declaration
+/* @brief Animations layer declaration
  *
- * Modified by Jose Luis
+ * @author Modified by Jose Luis
  */
 
 #ifndef __ANIMATION_H__
@@ -22,7 +22,12 @@ class Animation : public Object{
 public:
 
   void init();
-
+  
+  /* @brief This method animates a text in a vec2 position
+   * 
+   * @param std::string text
+   * @param vector2 position
+   */
   void animateText(std::string text, vector2 position);
 
   Animation();

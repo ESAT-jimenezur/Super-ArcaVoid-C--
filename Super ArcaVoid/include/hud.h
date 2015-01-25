@@ -17,6 +17,9 @@ public:
   void init();
   void draw();
   
+  /* @brief Draws the HUD on screen
+   *
+   */
   void drawHUD();
 
   Hud();

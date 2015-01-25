@@ -10,8 +10,11 @@ class MainMenu{
 public:
 
   void input();
-  void showMenu();
 
+  /* @brief Show the menu on screen
+   *
+   */
+  void showMenu();
 
   MainMenu();
   ~MainMenu(){};

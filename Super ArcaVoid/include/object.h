@@ -44,6 +44,10 @@ public:
   void update();
   void draw();
 
+  /* @brief Check if the object is colliding right now with the referenced object
+   *
+   * @param Object& (reference)
+   */
   bool isColliding(const Object& other);
 
 private:
