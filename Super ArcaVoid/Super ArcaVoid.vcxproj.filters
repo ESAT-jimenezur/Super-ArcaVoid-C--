@@ -42,6 +42,9 @@
     <ClCompile Include="src\hud.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\main_menu.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\object.h">
@@ -66,6 +69,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\hud.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\main_menu.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,6 +28,12 @@ public:
   static unsigned int kAnimation_position_y;
 
   static unsigned int points_;
+  static unsigned int destroyed_bricks_;
+
+  enum scenes_ {scene_main_menu, scene_game, scene_score};
+  static unsigned int selected_scene_;
+
+  static bool should_exit;
 
   // Singleton instance
   static GameManager *Instance();

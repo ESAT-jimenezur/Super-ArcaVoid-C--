@@ -39,7 +39,6 @@ void Ball::update(){
 
 void Ball::draw(){
   Object::draw();
-  
   p_ball();
 }
 
@@ -56,13 +55,9 @@ void Ball::paddleCollision(const Paddle& main_paddle){
 
   //Ball collision detection
   if (pos_y_ >= main_paddle.pos_y_ && pos_x_ >= main_paddle.pos_x_ && pos_x_ <= main_paddle.pos_x_ + ESAT::SpriteWidth(main_paddle.sprite_)){
-    
-    if (pos_x_ >= main_paddle.pos_x_ && pos_x_ <= main_paddle.pos_x_ + (ESAT::SpriteWidth(main_paddle.sprite_) / 2) - 5 ||
-        pos_x_ >= (ESAT::SpriteWidth(main_paddle.sprite_) / 2) + 5 && pos_x_ <= main_paddle.pos_x_ + ESAT::SpriteWidth(main_paddle.sprite_)){
-      //FixMe
-      //Collision fails a little
-      //printf("border col \n");
-      //vel_x_ = -vel_x_;
+    if (pos_x_ >= main_paddle.pos_x_ && pos_x_ <= main_paddle.pos_x_ + 20 || 
+      pos_x_ >= main_paddle.pos_x_ + (ESAT::SpriteWidth(main_paddle.sprite_)/2) && pos_x_ <= main_paddle.pos_x_ + (ESAT::SpriteWidth(main_paddle.sprite_)) - 20){
+      vel_x_ = -vel_x_;
     }
     vel_y_ = -vel_y_;
   }
@@ -79,9 +74,17 @@ void Ball::brickCollision(Brick* bricks){
 
         //Add points here
         GameManager::points_ += 100;
+        GameManager::destroyed_bricks_++;
         collision_with_brick_ = true;
         GameManager::kAnimation_position_x = bricks[i].pos_x_;
         GameManager::kAnimation_position_y = bricks[i].pos_y_;
+
+        // We should add a delay here if last cube to score screen
+        // Availiable in the next lib version
+        if (GameManager::destroyed_bricks_ >= GameManager::kBricks_amount){
+          GameManager::selected_scene_ = GameManager::scene_score;
+        }
+
       }
     }
     
