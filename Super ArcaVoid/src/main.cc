@@ -11,6 +11,11 @@
  *  Movimiento más fluido en le paddle... (metodo) -> Raton
  */
 
+
+/* Extra - Examen
+ * 25% prob on romper cae powerup (puntos) + efecto adicional temporal
+ */
+
 #include <stdio.h>
 #include <random>
 #include <time.h>
@@ -28,6 +33,7 @@
 #include "../include/ball.h"
 #include "../include/brick.h"
 #include "../include/animation.h"
+#include "../include/drop.h"
 #include "../include/hud.h"
 
 int ESAT::main(int argc, char **argv) {
@@ -41,8 +47,10 @@ int ESAT::main(int argc, char **argv) {
   MainMenu main_menu;
 
   // Creating a Paddle
-  Paddle main_paddle;
+  Paddle main_paddle, secondary_paddle;
   main_paddle.init("paddle.png");
+  secondary_paddle.init("paddle.png");
+  secondary_paddle.is_secondary = true;
 
   main_paddle.pos_y_ = GameManager::Instance()->kScreenHeight - ESAT::SpriteHeight(main_paddle.sprite_);
   main_paddle.pos_x_ = (GameManager::Instance()->kScreenWidth / 2) - ESAT::SpriteHeight(main_paddle.sprite_);
@@ -80,7 +88,9 @@ int ESAT::main(int argc, char **argv) {
 
   ///miliseconds pased from the last time that the game loop calls his functions
   long long int miliseconds = 0;
-  unsigned int frames_counter = 0;
+  unsigned int frames_counter_anim = 0;
+  unsigned int frames_counter_drop = 0;
+  unsigned int powerup_counter = 0;
   while (ESAT::WindowIsOpened() && !GameManager::should_exit){
 
     if (SDL_GetTicks() - miliseconds >= 16) {
@@ -108,18 +118,65 @@ int ESAT::main(int argc, char **argv) {
           for (int i = 0; i < GameManager::kBricks_amount; ++i){
             bricks[i].draw();
           }
-          if (main_ball.collision_with_brick_ && frames_counter >= 0 && frames_counter < GameManager::kAnimation_duration){
+          if (main_ball.collision_with_brick_ && frames_counter_anim >= 0 && frames_counter_anim < GameManager::kAnimation_duration){
             Animation animation;
             vector2 position;
             position.pos_x_ = GameManager::kAnimation_position_x;
-            position.pos_y_ = GameManager::kAnimation_position_y - frames_counter;
+            position.pos_y_ = GameManager::kAnimation_position_y - frames_counter_anim;
             animation.animateText("+100", position);
-            frames_counter++;
+            frames_counter_anim++;
           }
-          if (frames_counter >= GameManager::kAnimation_duration){
-            frames_counter = 0;
+          if (frames_counter_anim >= GameManager::kAnimation_duration){
+            frames_counter_anim = 0;
             main_ball.collision_with_brick_ = false;
           }
+
+
+          // Object generation-related work
+          if (GameManager::is_dropping && GameManager::drop_is_falling && frames_counter_drop <= GameManager::Instance()->kScreenHeight){
+            Drop drop;
+            drop.init();
+            drop.createDrop(GameManager::kAnimation_position_x + 25, GameManager::kAnimation_position_y + frames_counter_drop);
+            drop.fall();
+            frames_counter_drop += 4;
+
+            //printf("%f %f\n", drop.pos_x_, drop.pos_y_);
+
+            if (drop.pos_x_ >= main_paddle.pos_x_ && drop.pos_x_ <= main_paddle.pos_x_ + ESAT::SpriteWidth(main_paddle.sprite_)
+              && drop.pos_y_ >= main_paddle.pos_y_ && drop.pos_y_ <= main_paddle.pos_y_ + ESAT::SpriteHeight(main_paddle.sprite_)){
+             
+              GameManager::is_dropping = false;
+              GameManager::drop_is_falling = false;
+              GameManager::user_have_powerup = true;
+            }
+
+          }
+          if (frames_counter_drop >= GameManager::Instance()->kScreenHeight || GameManager::user_have_powerup){
+            frames_counter_drop = 0;
+            GameManager::is_dropping = 0;
+            GameManager::drop_is_falling = 0;
+            GameManager::double_paddle = true;
+          }
+
+          // PowerUp effects
+          // Second paddle
+          if (GameManager::user_have_powerup && powerup_counter <= 1000){
+
+            secondary_paddle.pos_y_ = main_paddle.pos_y_;
+            
+            secondary_paddle.input();
+            secondary_paddle.update();
+            main_ball.paddleCollision(secondary_paddle);
+            secondary_paddle.draw();
+
+            powerup_counter++;
+          }
+          if (powerup_counter >= 1000){
+            powerup_counter = 0;
+            GameManager::user_have_powerup = false;
+            GameManager::double_paddle = false;
+          }
+
           // Check if ball falls down
           if (main_ball.pos_y_ > GameManager::Instance()->kScreenHeight + 50){
             GameManager::selected_scene_ = GameManager::scene_score;

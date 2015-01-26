@@ -26,7 +26,7 @@ public:
   void input();
   void update();
 
-  
+  bool is_secondary;
 private:
 
 

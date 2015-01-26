@@ -33,6 +33,12 @@ public:
   enum scenes_ {scene_main_menu, scene_game, scene_score};
   static unsigned int selected_scene_;
 
+  //Drops
+  static bool is_dropping;
+  static bool drop_is_falling;
+  static bool user_have_powerup;
+  static bool double_paddle;
+
   static bool should_exit;
 
   // Singleton instance

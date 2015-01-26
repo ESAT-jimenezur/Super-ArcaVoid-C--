@@ -15,6 +15,10 @@ unsigned int GameManager::points_;
 unsigned int GameManager::destroyed_bricks_;
 unsigned int GameManager::selected_scene_;
 bool GameManager::should_exit;
+bool GameManager::is_dropping;
+bool GameManager::drop_is_falling;
+bool GameManager::user_have_powerup;
+bool GameManager::double_paddle;
 
 GameManager* GameManager::Instance() {
   //only one instance of this object can be generated
@@ -40,5 +44,9 @@ void GameManager::init(){
 
   should_exit = 0;
   destroyed_bricks_ = 0;
+  is_dropping = 0;
+  drop_is_falling = 0;
+  user_have_powerup = 0;
+  double_paddle = 0;
   selected_scene_ = scene_main_menu;
 }

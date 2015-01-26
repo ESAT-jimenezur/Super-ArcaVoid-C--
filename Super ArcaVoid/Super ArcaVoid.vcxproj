@@ -83,6 +83,7 @@
     <ClCompile Include="src\animation.cc" />
     <ClCompile Include="src\ball.cc" />
     <ClCompile Include="src\brick.cc" />
+    <ClCompile Include="src\drop.cc" />
     <ClCompile Include="src\game_manager.cc" />
     <ClCompile Include="src\game_pad.cc" />
     <ClCompile Include="src\hud.cc" />
@@ -90,17 +91,20 @@
     <ClCompile Include="src\main_menu.cc" />
     <ClCompile Include="src\object.cc" />
     <ClCompile Include="src\paddle.cc" />
+    <ClCompile Include="src\random.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\animation.h" />
     <ClInclude Include="include\ball.h" />
     <ClInclude Include="include\brick.h" />
+    <ClInclude Include="include\drop.h" />
     <ClInclude Include="include\game_manager.h" />
     <ClInclude Include="include\game_pad.h" />
     <ClInclude Include="include\hud.h" />
     <ClInclude Include="include\main_menu.h" />
     <ClInclude Include="include\object.h" />
     <ClInclude Include="include\paddle.h" />
+    <ClInclude Include="include\random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

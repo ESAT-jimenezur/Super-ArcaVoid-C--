@@ -45,6 +45,12 @@
     <ClCompile Include="src\main_menu.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\random.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\drop.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\object.h">
@@ -72,6 +78,12 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\main_menu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\random.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\drop.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

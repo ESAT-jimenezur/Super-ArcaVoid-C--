@@ -49,6 +49,8 @@ public:
    */
   void brickCollision(Brick* bricks); // Should we use const here?
 
+  void wall_collision();
+
   bool collision_with_brick_ = false;
 
 private:

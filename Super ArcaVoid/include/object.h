@@ -50,6 +50,8 @@ public:
    */
   bool isColliding(const Object& other);
 
+  void drawSquare(float pos_x, float pos_y, int size);
+
 private:
   Object(const Object& other){}
 

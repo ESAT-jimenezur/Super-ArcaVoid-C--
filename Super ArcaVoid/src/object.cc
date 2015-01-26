@@ -97,3 +97,6 @@ bool Object::isColliding(const Object& other){
   return false;
 }
 
+void Object::drawSquare(float pos_x, float pos_y, int size){
+
+}

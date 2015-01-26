@@ -13,6 +13,7 @@ Paddle::Paddle(){
 
 void Paddle::init(const char* sprite_name){
   Object::init(sprite_name);
+  is_secondary = false;
 }
 
 
@@ -35,6 +36,9 @@ void Paddle::input(){
 
   //Mouse position based paddle movement
   pos_x_ = GameManager::Instance()->game_pad1->getMousePositionX();
+  if (is_secondary){
+    pos_x_ = GameManager::Instance()->game_pad1->getMousePositionX() + 64;
+  }
 
   GameManager::Instance()->game_pad1->restartPulsations();
 };
